@@ -968,14 +968,14 @@ a { color: inherit; text-decoration: none; }
   .modal-bg { padding: 12px; }
   .modal {
     max-height: 95vh;
-    border-radius: var(--r-xl);
-    max-width: 96vw !important;  /* Forzar override de los inline styles max-width:900px etc */
+    border-radius: 18px;
+    max-width: 96vw !important;
   }
-  .modal-head { padding: 16px 20px; }
-  .modal-head h2 { font-size: 18px; }
-  .modal-body { padding: 16px 20px; }
-  .modal-foot { 
-    padding: 12px 20px;
+  .modal-head { padding: 16px 18px 13px; }
+  .modal-head h2 { font-size: 15px; }
+  .modal-body { padding: 16px 18px; }
+  .modal-foot {
+    padding: 12px 18px;
     flex-wrap: wrap;
     gap: 6px;
   }
@@ -1462,76 +1462,93 @@ a { color: inherit; text-decoration: none; }
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 10px 18px;
-  border-radius: var(--r-pill);
+  justify-content: center;
+  gap: 7px;
+  padding: 9px 18px;
+  border-radius: 12px;
   font-size: 13px;
   font-weight: 600;
   white-space: nowrap;
-  transition: all 0.18s var(--ez);
-  border: 1px solid transparent;
+  transition: all 0.15s var(--ez);
+  border: 1.5px solid transparent;
   cursor: pointer;
   position: relative;
-  overflow: hidden;
+  letter-spacing: -0.01em;
 }
-.btn:focus-visible { outline: 2px solid var(--brand-deep); outline-offset: 2px; }
+.btn:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
 .btn:active { transform: scale(0.97); }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; pointer-events: none; }
 
+/* Primario — navy sólido */
 .btn-primary {
-  background: transparent;
-  color: var(--brand-deep);
-  border: 1.5px solid var(--brand);
+  background: var(--brand);
+  color: white;
+  border-color: var(--brand);
 }
 .btn-primary:hover {
-  background: var(--brand-tint);
-  color: var(--brand-deep);
+  background: var(--brand-deep);
   border-color: var(--brand-deep);
 }
-.btn-primary:active {
-  background: var(--brand-soft);
-}
 
+/* Accent */
 .btn-accent {
-  background: transparent;
-  color: var(--accent-deep);
-  border: 1.5px solid var(--accent);
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
 }
 .btn-accent:hover {
-  background: var(--accent-tint);
-  color: var(--accent-deep);
+  background: var(--accent-deep);
   border-color: var(--accent-deep);
 }
-.btn-accent:active {
-  background: var(--accent-soft);
-}
 
+/* Secundario — sutil */
 .btn-secondary {
   background: var(--surface-2);
   color: var(--ink-1);
-  border-color: transparent;
+  border-color: var(--line);
 }
 .btn-secondary:hover {
   background: var(--surface-3);
+  border-color: var(--line-strong);
   color: var(--ink);
 }
 
-.btn-ghost { color: var(--ink-2); background: transparent; }
+/* Ghost */
+.btn-ghost {
+  color: var(--ink-2);
+  background: transparent;
+  border-color: transparent;
+}
 .btn-ghost:hover { background: var(--surface-2); color: var(--ink); }
 
+/* Peligro */
 .btn-danger {
-  background: var(--danger-soft);
+  background: var(--danger-tint);
   color: var(--danger);
+  border-color: var(--danger-soft);
 }
 .btn-danger:hover {
   background: var(--danger);
   color: white;
+  border-color: var(--danger);
 }
 
-.btn-icon { padding: 0; width: 36px; height: 36px; justify-content: center; border-radius: var(--r-md); }
-.btn svg { width: 15px; height: 15px; flex-shrink: 0; }
-.btn-sm { padding: 7px 14px; font-size: 12px; }
-.btn-sm svg { width: 13px; height: 13px; }
-.btn-lg { padding: 12px 22px; font-size: 14px; }
+/* Éxito */
+.btn-success {
+  background: var(--success);
+  color: white;
+  border-color: var(--success);
+}
+.btn-success:hover { background: #4A8F73; border-color: #4A8F73; }
+
+.btn-icon { padding: 0; width: 36px; height: 36px; justify-content: center; border-radius: 10px; }
+.btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+.btn-sm { padding: 6px 13px; font-size: 12px; border-radius: 10px; }
+.btn-sm svg { width: 12px; height: 12px; }
+.btn-lg { padding: 11px 24px; font-size: 14px; border-radius: 14px; }
 
 /* ============================================================
    CARDS
@@ -3446,6 +3463,173 @@ tbody tr:last-child td { border-bottom: none; }
   margin: 0 2px;
 }
 
+
+/* ============================================================
+   MODAL — Extras modernos para módulos específicos
+   ============================================================ */
+
+/* Tipo de movimiento pills (caja, pago) */
+.tipo-pill-group {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.tipo-pill {
+  padding: 6px 14px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1.5px solid var(--line);
+  background: var(--bg);
+  color: var(--ink-2);
+  transition: all 0.15s;
+}
+.tipo-pill:hover { border-color: var(--brand-soft); color: var(--brand); }
+.tipo-pill.active { background: var(--brand-tint); border-color: var(--brand); color: var(--brand-deep); }
+.tipo-pill.ingreso.active { background: var(--success-tint); border-color: var(--success); color: var(--success); }
+.tipo-pill.egreso.active  { background: var(--danger-tint);  border-color: var(--danger);  color: var(--danger); }
+
+/* Método de pago pills */
+.metodo-pill-group { display: flex; gap: 6px; flex-wrap: wrap; }
+.metodo-pill {
+  padding: 7px 13px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1.5px solid var(--line);
+  background: var(--bg);
+  color: var(--ink-2);
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.metodo-pill:hover { border-color: var(--brand-soft); }
+.metodo-pill.active { background: var(--brand-tint); border-color: var(--brand); color: var(--brand-deep); }
+
+/* Inline style overrides para bloques dentro de modales */
+.modal-body [style*="background:var(--brand-tint)"],
+.modal-body [style*="background: var(--brand-tint)"] {
+  background: var(--brand-tint) !important;
+  border: 1px solid var(--brand-soft);
+  border-radius: 12px !important;
+  padding: 11px 14px !important;
+}
+
+/* Tabla dentro de modal */
+.modal-body table { font-size: 12.5px; }
+.modal-body th {
+  background: var(--surface-2);
+  font-weight: 600;
+  color: var(--ink-2);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 8px 12px;
+}
+.modal-body td { padding: 9px 12px; }
+.modal-body tr:not(:last-child) td { border-bottom: 1px solid var(--line-soft); }
+
+/* Animación suave de entrada para inputs dentro de modales */
+.modal-body .form-control,
+.modal-body .form-field {
+  animation: none;
+}
+
+/* Badge dentro de modal */
+.modal-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 9px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* Aviso / alerta dentro de modal */
+.modal-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+.modal-alert.warning { background: var(--warning-tint); color: var(--ink-1); border: 1px solid var(--warning-soft); }
+.modal-alert.info    { background: var(--brand-tint);   color: var(--ink-1); border: 1px solid var(--brand-soft);   }
+.modal-alert.danger  { background: var(--danger-tint);  color: var(--ink-1); border: 1px solid var(--danger-soft);  }
+.modal-alert.success { background: var(--success-tint); color: var(--ink-1); border: 1px solid var(--success-soft); }
+.modal-alert svg { flex-shrink: 0; margin-top: 1px; }
+
+/* Resumen financiero en modal (total, saldo, etc.) */
+.modal-summary {
+  background: var(--surface-2);
+  border-radius: 14px;
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.modal-summary-label { font-size: 12px; color: var(--ink-2); font-weight: 500; }
+.modal-summary-value { font-size: 18px; font-weight: 700; font-family: var(--ff-mono); color: var(--ink); letter-spacing: -0.02em; }
+.modal-summary-value.success { color: var(--success); }
+.modal-summary-value.danger  { color: var(--danger); }
+
+/* Modal con header coloreado (como notas de evolución) */
+.modal-head.branded {
+  background: linear-gradient(135deg, var(--brand) 0%, var(--brand-deep) 100%);
+  color: white;
+  border-bottom: none;
+}
+.modal-head.branded h2 { color: white; }
+.modal-head.branded .modal-subtitle { color: rgba(255,255,255,0.75); }
+.modal-head.branded .modal-close { color: rgba(255,255,255,0.8); }
+.modal-head.branded .modal-close:hover { background: rgba(255,255,255,0.15); color: white; }
+
+/* Modal head success */
+.modal-head.success-head {
+  background: linear-gradient(135deg, var(--success) 0%, #4A8F73 100%);
+  color: white;
+  border-bottom: none;
+}
+.modal-head.success-head h2, .modal-head.success-head .modal-subtitle { color: white; }
+.modal-head.success-head .modal-close { color: rgba(255,255,255,0.8); }
+
+/* Steps / wizard en modales */
+.modal-steps {
+  display: flex;
+  gap: 0;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--surface-2);
+}
+.modal-step {
+  flex: 1;
+  padding: 9px 12px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ink-3);
+  border-right: 1px solid var(--line);
+}
+.modal-step:last-child { border-right: none; }
+.modal-step.active { background: var(--brand); color: white; }
+.modal-step.done   { background: var(--success-tint); color: var(--success); }
+
+/* Responsive */
+@media (max-width: 640px) {
+  .modal-head { padding: 16px 18px 13px; }
+  .modal-head h2 { font-size: 15px; }
+  .modal-body { padding: 16px 18px; }
+  .modal-foot { padding: 12px 18px; }
+}
+
 /* ============================================================
    TOAST en esquina con shortcut visual
    ============================================================ */
@@ -3534,9 +3718,12 @@ tbody tr:last-child td { border-bottom: none; }
 /* ============================================================
    FORMS
    ============================================================ */
+/* ============================================================
+   FORMULARIOS — Sistema unificado
+   ============================================================ */
 .form-grid {
   display: grid;
-  gap: 14px;
+  gap: 12px;
 }
 .form-grid.cols-2 { grid-template-columns: 1fr 1fr; }
 .form-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
@@ -3544,132 +3731,252 @@ tbody tr:last-child td { border-bottom: none; }
   .form-grid.cols-2, .form-grid.cols-3 { grid-template-columns: 1fr; }
 }
 
-.form-field { display: flex; flex-direction: column; }
-.form-label {
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--ink-1);
-  margin-bottom: 5px;
-  letter-spacing: 0.01em;
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
-.form-label .req { color: var(--danger); margin-left: 2px; }
+
+.form-label {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--ink-2);
+  letter-spacing: 0.01em;
+  display: block;
+}
+.form-label .req,
+.req { color: var(--danger); margin-left: 2px; font-weight: 700; }
 
 .form-control {
-  padding: 11px 16px;
-  border: 1px solid var(--line);
-  border-radius: var(--r-md);
+  padding: 10px 14px;
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
   font-size: 13px;
-  background: var(--surface-2);
+  background: var(--bg);
   color: var(--ink);
   outline: none;
-  transition: all 0.15s var(--ez);
+  transition: border-color 0.15s var(--ez), box-shadow 0.15s var(--ez), background 0.15s var(--ez);
   width: 100%;
+  line-height: 1.4;
+}
+.form-control:hover:not(:disabled) {
+  border-color: var(--brand-soft);
 }
 .form-control:focus {
   border-color: var(--brand);
   background: var(--surface);
-  box-shadow: 0 0 0 4px var(--brand-tint);
+  box-shadow: 0 0 0 3px var(--brand-tint);
 }
-.form-control::placeholder {
-  color: var(--ink-3);
+.form-control::placeholder { color: var(--ink-4); }
+.form-control:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  background: var(--surface-2);
 }
 
-textarea.form-control { resize: vertical; min-height: 80px; padding: 12px 16px; }
+textarea.form-control {
+  resize: vertical;
+  min-height: 88px;
+  padding: 11px 14px;
+  line-height: 1.6;
+}
 select.form-control {
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237A746B' stroke-width='2' stroke-linecap='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2394A3B8' stroke-width='2.5' stroke-linecap='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
-  background-position: right 14px center;
-  background-size: 14px;
-  padding-right: 38px;
+  background-position: right 12px center;
+  background-size: 13px;
+  padding-right: 36px;
   cursor: pointer;
 }
 
-.form-label {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--ink-1);
-  margin-bottom: 6px;
-  display: block;
-}
 .form-hint {
   font-size: 11px;
   color: var(--ink-3);
-  margin-top: 5px;
+  line-height: 1.4;
 }
-.form-field {
-  margin-bottom: 14px;
+
+/* Grupos de campos (reemplaza form-field con margin) */
+.form-row {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 0;
 }
-.req {
-  color: var(--accent-deep);
-  font-weight: 700;
+.form-row.cols-2 { grid-template-columns: 1fr 1fr; }
+.form-row.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+
+/* Checkbox moderno */
+.form-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--surface-2);
+  cursor: pointer;
+  font-size: 12.5px;
+  color: var(--ink-1);
+  line-height: 1.4;
+  border: 1.5px solid transparent;
+  transition: all 0.15s;
+}
+.form-check:hover { border-color: var(--brand-soft); background: var(--brand-tint); }
+.form-check input[type="checkbox"] {
+  width: 15px; height: 15px;
+  accent-color: var(--brand);
+  flex-shrink: 0;
+  margin-top: 1px;
 }
 
 /* ============================================================
-   MODAL
+   MODAL — Sistema unificado moderno
    ============================================================ */
+
+/* Overlay */
 .modal-bg {
   position: fixed;
   inset: 0;
-  background: rgba(45, 42, 38, 0.45);
-  backdrop-filter: blur(6px);
+  background: rgba(20, 32, 48, 0.50);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   z-index: 1000;
   display: none;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 16px;
 }
-.modal-bg.active { display: flex; animation: bgIn 0.18s var(--ez-out); }
-@keyframes bgIn { from { opacity: 0; } to { opacity: 1; } }
+.modal-bg.active {
+  display: flex;
+  animation: modalBgIn 0.2s var(--ez-out) both;
+}
+@keyframes modalBgIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
 
+/* Contenedor del modal */
 .modal {
   background: var(--surface);
-  border-radius: var(--r-xxl);
+  border-radius: 20px;
   max-width: 580px;
   width: 100%;
-  max-height: 90vh;
+  max-height: 92vh;
   display: flex;
   flex-direction: column;
-  box-shadow: var(--sh-xl);
-  animation: modalIn 0.25s var(--ez-spring);
+  box-shadow:
+    0 0 0 1px rgba(30,42,58,0.06),
+    0 4px 12px rgba(30,42,58,0.06),
+    0 20px 48px rgba(30,42,58,0.14);
+  animation: modalSlideIn 0.28s var(--ez-spring) both;
+  overflow: hidden;
 }
-@keyframes modalIn {
-  from { opacity: 0; transform: translateY(20px) scale(0.96); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
+@keyframes modalSlideIn {
+  from { opacity: 0; transform: translateY(16px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0)    scale(1); }
 }
 
+/* Header */
 .modal-head {
-  padding: 22px 26px;
-  border-bottom: 1px solid var(--line-soft);
+  padding: 20px 24px 16px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
+  gap: 12px;
+  border-bottom: 1px solid var(--line-soft);
+  flex-shrink: 0;
 }
 .modal-head h2 {
-  font-family: var(--ff-display);
-  font-size: 22px;
-  font-weight: 500;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--ink);
   letter-spacing: -0.01em;
+  line-height: 1.3;
 }
+.modal-head .modal-subtitle {
+  font-size: 12px;
+  color: var(--ink-3);
+  margin-top: 2px;
+  font-weight: 400;
+}
+
+/* Botón cerrar */
 .modal-close {
-  width: 36px;
-  height: 36px;
-  border-radius: var(--r-pill);
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
   display: grid;
   place-items: center;
-  color: var(--ink-2);
+  color: var(--ink-3);
+  flex-shrink: 0;
+  transition: all 0.15s var(--ez);
+  margin-top: -2px;
 }
-.modal-close:hover { background: var(--surface-2); color: var(--ink); }
+.modal-close:hover {
+  background: var(--surface-2);
+  color: var(--ink-1);
+}
+.modal-close svg { width: 16px; height: 16px; }
 
-.modal-body { padding: 22px 26px; overflow-y: auto; flex: 1; }
+/* Cuerpo */
+.modal-body {
+  padding: 20px 24px;
+  overflow-y: auto;
+  flex: 1;
+  overscroll-behavior: contain;
+}
+.modal-body::-webkit-scrollbar { width: 4px; }
+.modal-body::-webkit-scrollbar-track { background: transparent; }
+.modal-body::-webkit-scrollbar-thumb { background: var(--line-strong); border-radius: 4px; }
+
+/* Footer */
 .modal-foot {
-  padding: 16px 26px;
+  padding: 14px 24px;
   border-top: 1px solid var(--line-soft);
   background: var(--bg);
   display: flex;
   justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* Sección dentro de un modal (agrupador visual) */
+.modal-section {
+  background: var(--surface-2);
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+}
+.modal-section-title {
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-3);
+  margin-bottom: 12px;
+}
+
+/* Info pill dentro de modal (ej: saldo pendiente) */
+.modal-info-pill {
+  display: flex;
+  align-items: center;
   gap: 10px;
-  border-radius: 0 0 var(--r-xxl) var(--r-xxl);
+  background: var(--brand-tint);
+  border: 1px solid var(--brand-soft);
+  border-radius: 12px;
+  padding: 10px 14px;
+  margin-bottom: 16px;
+  font-size: 13px;
+  color: var(--ink-1);
+}
+.modal-info-pill svg { color: var(--brand); flex-shrink: 0; }
+.modal-info-pill strong { color: var(--brand-deep); }
+
+/* Separador dentro del modal */
+.modal-divider {
+  height: 1px;
+  background: var(--line-soft);
+  margin: 16px 0;
 }
 
 /* ============================================================
@@ -8374,9 +8681,12 @@ select.form-control {
 <div class="modal-bg" id="modal-userSelect">
   <div class="modal" style="max-width:420px;">
     <div class="modal-head">
-      <h2>Cambiar usuario</h2>
+      <div>
+              <h2>Cambiar usuario</h2>
+              <div class="modal-subtitle">Solo disponible en modo demo</div>
+            </div>
       <button class="modal-close" onclick="closeModal('userSelect')">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
     </div>
     <div class="modal-body">
@@ -9931,9 +10241,12 @@ select.form-control {
       <div class="modal-bg" id="modal-newEpisode">
         <div class="modal" style="max-width:680px;">
           <div class="modal-head">
-            <h2>Nuevo episodio clínico</h2>
+            <div>
+              <h2>Nuevo episodio clínico</h2>
+              <div class="modal-subtitle">Se creará un expediente de tratamiento</div>
+            </div>
             <button class="modal-close" onclick="closeModal('newEpisode')">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
           </div>
           <div class="modal-body">
@@ -10047,7 +10360,7 @@ select.form-control {
           <div class="modal-head">
             <h2 id="tratModalTitle">Nuevo tratamiento</h2>
             <button class="modal-close" onclick="closeModal('trat')">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
           </div>
           <div class="modal-body">
@@ -10139,9 +10452,12 @@ select.form-control {
       <div class="modal-bg" id="modal-priceUpdate">
         <div class="modal" style="max-width:480px;">
           <div class="modal-head">
-            <h2>Actualización masiva de precios</h2>
+            <div>
+              <h2>Actualización masiva de precios</h2>
+              <div class="modal-subtitle">Modifica costos de todos los tratamientos</div>
+            </div>
             <button class="modal-close" onclick="closeModal('priceUpdate')">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
           </div>
           <div class="modal-body">
@@ -10381,9 +10697,12 @@ select.form-control {
       <div class="modal-bg" id="modal-presEditor">
         <div class="modal" style="max-width:900px;">
           <div class="modal-head">
-            <h2 id="presEditorTitle">Nuevo presupuesto</h2>
+            <div>
+              <h2 id="presEditorTitle">Nuevo presupuesto</h2>
+              <div class="modal-subtitle">Plan de tratamiento con costos</div>
+            </div>
             <button class="modal-close" onclick="closeModal('presEditor')">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
           </div>
           <div class="modal-body">
@@ -10500,9 +10819,12 @@ select.form-control {
       <div class="modal-bg" id="modal-presItem">
         <div class="modal" style="max-width:560px;">
           <div class="modal-head">
-            <h2>Agregar tratamiento</h2>
+            <div>
+              <h2>Agregar tratamiento</h2>
+              <div class="modal-subtitle">Ítem del presupuesto del paciente</div>
+            </div>
             <button class="modal-close" onclick="closeModal('presItem')">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
           </div>
           <div class="modal-body">
@@ -10562,14 +10884,18 @@ select.form-control {
       <div class="modal-bg" id="modal-pago">
         <div class="modal" style="max-width:480px;">
           <div class="modal-head">
-            <h2>Registrar pago</h2>
+            <div>
+              <h2>Registrar pago</h2>
+              <div class="modal-subtitle">Se registrará en el historial del paciente</div>
+            </div>
             <button class="modal-close" onclick="closeModal('pago')">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
           </div>
           <div class="modal-body">
-            <div style="background:var(--brand-tint);padding:12px 14px;border-radius:var(--r-md);margin-bottom:14px;font-size:13px;">
-              <strong>Saldo pendiente:</strong> <span id="pagoSaldo" style="font-family:var(--ff-mono);font-weight:600;color:var(--danger);">$0.00</span>
+            <div class="modal-info-pill">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <span>Saldo pendiente: <strong id="pagoSaldo" style="font-family:var(--ff-mono);color:var(--danger);">$0.00</strong></span>
             </div>
             <div class="form-grid cols-2">
               <div class="form-field">
@@ -10613,7 +10939,7 @@ select.form-control {
           <div class="modal-head">
             <h2 id="syncOdonPresTitle">Sincronizar con presupuesto</h2>
             <button class="modal-close" onclick="closeModal('syncOdonPres')">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
           </div>
           <div class="modal-body">
@@ -10699,9 +11025,12 @@ select.form-control {
       <div class="modal-bg" id="modal-cajaMov">
         <div class="modal" style="max-width:520px;">
           <div class="modal-head">
-            <h2>Nuevo movimiento de caja</h2>
+            <div>
+              <h2>Nuevo movimiento</h2>
+              <div class="modal-subtitle">Registro en caja de la sede activa</div>
+            </div>
             <button class="modal-close" onclick="closeModal('cajaMov')">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
           </div>
           <div class="modal-body">
@@ -10737,7 +11066,7 @@ select.form-control {
                 <input type="number" step="0.01" class="form-control" id="cajaMovMonto" />
               </div>
             </div>
-            <div style="margin-top:8px;padding:10px 14px;background:var(--brand-tint);border-radius:var(--r-md);font-size:12px;color:var(--brand);">
+            <div class="modal-alert info" style="margin-top:4px;">
               <strong>Sede asignada:</strong> <span id="cajaMovSedeInfo">—</span>
             </div>
           </div>
@@ -11134,7 +11463,7 @@ select.form-control {
           <div class="modal-head">
             <h2 id="mktCampanaTitle">Nueva campaña</h2>
             <button class="modal-close" onclick="closeModal('mktCampana')">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
           </div>
           <div class="modal-body">
@@ -11194,7 +11523,7 @@ select.form-control {
           <div class="modal-head">
             <h2 id="mktPromoTitle">Nueva promoción</h2>
             <button class="modal-close" onclick="closeModal('mktPromo')">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
           </div>
           <div class="modal-body">
@@ -11321,9 +11650,12 @@ select.form-control {
       <div class="modal-bg" id="modal-invProducto">
         <div class="modal" style="max-width:720px;">
           <div class="modal-head">
-            <h2 id="invProductoTitle">Nuevo producto</h2>
+            <div>
+              <h2 id="invProductoTitle">Nuevo producto</h2>
+              <div class="modal-subtitle">Insumo o material del inventario</div>
+            </div>
             <button class="modal-close" onclick="closeModal('invProducto')">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
           </div>
           <div class="modal-body">
@@ -11434,7 +11766,7 @@ select.form-control {
           <div class="modal-head">
             <h2 id="invProdDetailTitle">Detalle del producto</h2>
             <button class="modal-close" onclick="closeModal('invProductoDetail')">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
           </div>
           <div class="modal-body" id="invProdDetailBody"></div>
@@ -11452,9 +11784,12 @@ select.form-control {
       <div class="modal-bg" id="modal-invAjuste">
         <div class="modal" style="max-width:480px;">
           <div class="modal-head">
-            <h2>Ajuste de stock</h2>
+            <div>
+              <h2>Ajuste de stock</h2>
+              <div class="modal-subtitle">Corrección de inventario en la sede</div>
+            </div>
             <button class="modal-close" onclick="closeModal('invAjuste')">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
           </div>
           <div class="modal-body">
@@ -11549,7 +11884,7 @@ select.form-control {
           <div class="modal-head">
             <h2 id="invOrdenTitle">Nueva orden de compra</h2>
             <button class="modal-close" onclick="closeModal('invOrden')">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
           </div>
           <div class="modal-body">
@@ -11622,9 +11957,12 @@ select.form-control {
       <div class="modal-bg" id="modal-invOrdenItem">
         <div class="modal" style="max-width:520px;">
           <div class="modal-head">
-            <h2>Agregar producto a orden</h2>
+            <div>
+              <h2>Agregar producto a orden</h2>
+              <div class="modal-subtitle">Insumo en la orden de compra</div>
+            </div>
             <button class="modal-close" onclick="closeModal('invOrdenItem')">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
           </div>
           <div class="modal-body">
@@ -11656,9 +11994,12 @@ select.form-control {
       <div class="modal-bg" id="modal-invRecibir">
         <div class="modal" style="max-width:680px;">
           <div class="modal-head">
-            <h2>Recibir orden de compra</h2>
+            <div>
+              <h2>Recibir orden de compra</h2>
+              <div class="modal-subtitle">Entrada de productos al inventario</div>
+            </div>
             <button class="modal-close" onclick="closeModal('invRecibir')">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
           </div>
           <div class="modal-body">
@@ -11746,7 +12087,7 @@ select.form-control {
           <div class="modal-head">
             <h2 id="invProveedorTitle">Nuevo proveedor</h2>
             <button class="modal-close" onclick="closeModal('invProveedor')">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
           </div>
           <div class="modal-body">
@@ -11934,7 +12275,7 @@ select.form-control {
           <div class="modal-head">
             <h2 id="invConsumoTitle">Nueva receta de consumo</h2>
             <button class="modal-close" onclick="closeModal('invConsumo')">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
           </div>
           <div class="modal-body">
@@ -12022,9 +12363,12 @@ select.form-control {
       <div class="modal-bg" id="modal-invTransferencia">
         <div class="modal" style="max-width:560px;">
           <div class="modal-head">
-            <h2>Nueva transferencia entre sedes</h2>
+            <div>
+              <h2>Nueva transferencia entre sedes</h2>
+              <div class="modal-subtitle">Movimiento de stock entre sucursales</div>
+            </div>
             <button class="modal-close" onclick="closeModal('invTransferencia')">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
           </div>
           <div class="modal-body">
@@ -12232,9 +12576,15 @@ select.form-control {
       <div class="modal-bg" id="modal-labOrden">
         <div class="modal" style="max-width:780px;">
           <div class="modal-head">
-            <h2 id="labOrdenTitle">Nueva orden de laboratorio</h2>
+            <div>
+              <div>
+              <h2 id="labOrdenTitle">Nueva orden</h2>
+              <div class="modal-subtitle">Trabajo al laboratorio dental</div>
+            </div>
+              <div class="modal-subtitle">Trabajo enviado al laboratorio dental</div>
+            </div>
             <button class="modal-close" onclick="closeModal('labOrden')">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
           </div>
           <div class="modal-body">
@@ -12341,7 +12691,7 @@ select.form-control {
           <div class="modal-head">
             <h2 id="labLaboratorioTitle">Nuevo laboratorio</h2>
             <button class="modal-close" onclick="closeModal('labLaboratorio')">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
           </div>
           <div class="modal-body">
@@ -12420,7 +12770,7 @@ select.form-control {
           <div class="modal-head">
             <h2 id="labCatalogoTitle">Nuevo trabajo del catálogo</h2>
             <button class="modal-close" onclick="closeModal('labCatalogo')">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
           </div>
           <div class="modal-body">
@@ -13119,9 +13469,12 @@ select.form-control {
       <div class="modal-bg" id="modal-usuarioForm">
         <div class="modal" style="max-width:520px;">
           <div class="modal-head">
-            <h2 id="usuarioFormTitle">Nuevo usuario</h2>
+            <div>
+              <h2 id="usuarioFormTitle">Nuevo usuario</h2>
+              <div class="modal-subtitle">Miembro del equipo de la clínica</div>
+            </div>
             <button class="modal-close" onclick="closeModal('usuarioForm')">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
           </div>
           <div class="modal-body">
@@ -13228,7 +13581,10 @@ select.form-control {
       <div class="modal-bg" id="modal-usuarioCredentials">
         <div class="modal" style="max-width:480px;">
           <div class="modal-head">
-            <h2>✅ Usuario creado</h2>
+            <div>
+              <h2>✅ Usuario creado</h2>
+              <div class="modal-subtitle">Credenciales de acceso al sistema</div>
+            </div>
           </div>
           <div class="modal-body">
             <div style="background:var(--warning-tint);border:1px solid var(--warning-soft);border-radius:8px;padding:14px;margin-bottom:16px;">
@@ -13269,9 +13625,12 @@ select.form-control {
       <div class="modal-bg" id="modal-pagoForm">
         <div class="modal" style="max-width:520px;">
           <div class="modal-head">
-            <h2>Registrar pago</h2>
+            <div>
+              <h2>Registrar pago</h2>
+              <div class="modal-subtitle">Cobro al paciente por tratamiento</div>
+            </div>
             <button class="modal-close" onclick="closeModal('pagoForm')">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
           </div>
           <div class="modal-body">
@@ -13411,9 +13770,12 @@ select.form-control {
       <div class="modal-bg" id="modal-sedeForm">
         <div class="modal" style="max-width:580px;">
           <div class="modal-head">
-            <h2 id="sedeFormTitle">Nueva sede</h2>
+            <div>
+              <h2 id="sedeFormTitle">Nueva sede</h2>
+              <div class="modal-subtitle">Sucursal de tu clínica dental</div>
+            </div>
             <button class="modal-close" onclick="closeModal('sedeForm')">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
           </div>
           <div class="modal-body">
@@ -13685,10 +14047,10 @@ select.form-control {
           <div class="modal-head">
             <div>
               <h2 id="editApptTitle">Editar cita</h2>
-              <div id="editApptSubtitle" style="font-size:12px;color:var(--ink-3);margin-top:2px;"></div>
+              <div class="modal-subtitle" id="editApptSubtitle"></div>
             </div>
             <button class="modal-close" onclick="closeModal('editAppt')">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
           </div>
           <div class="modal-body">
@@ -13788,7 +14150,7 @@ select.form-control {
     <div class="modal-head">
       <h2>Nueva cita</h2>
       <button class="modal-close" onclick="closeModal('newAppt')">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
     </div>
     <div class="modal-body">
@@ -13873,9 +14235,12 @@ select.form-control {
 <div class="modal-bg" id="modal-newPatient">
   <div class="modal">
     <div class="modal-head">
-      <h2>Nuevo paciente</h2>
+      <div>
+        <h2>Nuevo paciente</h2>
+        <div class="modal-subtitle">Registro en la base de pacientes</div>
+      </div>
       <button class="modal-close" onclick="closeModal('newPatient')">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
     </div>
     <div class="modal-body">
@@ -33950,7 +34315,7 @@ window.addEventListener('DOMContentLoaded', async () => {
           <div class="modal-head">
             <h2>Atajos de teclado</h2>
             <button class="modal-close" onclick="closeModal('shortcuts')">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
           </div>
           <div class="modal-body">
@@ -33972,7 +34337,7 @@ window.addEventListener('DOMContentLoaded', async () => {
           <div class="modal-head">
             <h2>Vincular tratamiento</h2>
             <button class="modal-close" onclick="closeModal('linkTreat')">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M18 6L6 18M6 6l12 12"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
           </div>
           <div class="modal-body">
